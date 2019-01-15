@@ -1,8 +1,10 @@
 uniform float time;
 uniform float offset;
-//uniform float offsetVal;
+
+uniform float offsetVal;
 uniform vec3 color;
 uniform float shadow;
+uniform float length;
 
 
 varying vec2 vUv;
@@ -12,12 +14,11 @@ varying vec2 vUv;
 
 void main() {
 
-//  float o = fract(time/500. + offset/offsetVal);
-  float o = fract(time/500. + offset/10.);
+  float o = fract(time/500. + offset/offsetVal);
 
-  float length = 0.3;
+  float hole = length/2.;
 
-  if(abs(vUv.x - o) > length && abs(vUv.x - o - 1.) > length && abs(vUv.x - o + 1.) > length) {
+  if(abs(vUv.x - o) > hole && abs(vUv.x - o - 1.) > hole && abs(vUv.x - o + 1.) > hole) {
     discard;
   }
 
